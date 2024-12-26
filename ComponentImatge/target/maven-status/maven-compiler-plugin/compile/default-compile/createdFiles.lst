@@ -1,0 +1,16 @@
+spdvi\logica\GuardarImatge.class
+spdvi\logica\GuardarImatgeAzure.class
+spdvi\logica\RedimensionarImatge.class
+spdvi\logica\RotarImatge.class
+spdvi\logica\CarregarImatge.class
+spdvi\Main.class
+spdvi\logica\AvancarImatge.class
+spdvi\componentimatge\ImagePanel.class
+spdvi\ui\CustomFontExample.class
+spdvi\componentimatge\ImagePanelAzure.class
+spdvi\logica\MostrarDimensions.class
+spdvi\ui\LogicaNavBar.class
+spdvi\componentimatge\ImagePanel$1.class
+spdvi\logica\RetrocedirImatge.class
+spdvi\logica\NetejarImatge.class
+spdvi\serveis\AzureBlobService.class
