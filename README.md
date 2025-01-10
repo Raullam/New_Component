@@ -115,6 +115,77 @@ Aquest component utilitza les següents dependències:
 
 ### 1. **Crear un objecte de `AzureBlobService`**
    Necessites proporcionar una cadena de connexió d'Azure Storage per utilitzar el servei de pujada de blobs.
+    
    
    ```java
    AzureBlobService azureBlobService = new AzureBlobService("<your_connection_string>");
+   ```
+2. Carregar i visualitzar imatges
+Pots carregar imatges utilitzant el botó "Cargar Imagen" a través d'un selector de fitxers.
+Navega entre les imatges amb els botons "Adelante" i "Atrás".
+```java
+imagePanel.loadImage("/path/to/your/image.jpg");
+```
+3. Manipular imatges
+Redimensiona les imatges amb el botó "Redimensionar", indicant l'amplada i alçada desitjades.
+Rota les imatges en increments de 90 graus amb el botó "Rotar Imagen".
+```java
+imagePanel.resizeImage(800, 600); // Redimensionar a 800x600 píxels
+imagePanel.rotateImage(90); // Rota la imatge 90 graus
+```
+4. Guardar imatges
+Desa la imatge actual utilitzant el botó "Guardar Imagen".
+
+```java
+JFileChooser fileChooser = new JFileChooser();
+int result = fileChooser.showSaveDialog(this);
+if (result == JFileChooser.APPROVE_OPTION) {
+    String outputPath = fileChooser.getSelectedFile().getAbsolutePath();
+    imagePanel.saveImage(outputPath);
+}
+```
+5. Càrrega d'imatges a Azure
+Puja imatges a Azure Blob Storage cridant el mètode uploadBlob de AzureBlobService amb els bytes de la imatge.
+```java
+File imageFile = new File("/path/to/image.jpg");
+byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+azureBlobService.uploadBlob("your-container-name", "image.jpg", imageBytes);
+```
+Botons interactius
+A continuació es detallen les accions associades als botons:
+
+Botó	Funció	Icona
+📂 Cargar Imagen	Carregar una imatge des del sistema de fitxers.	📂
+🔧 Redimensionar	Redimensionar la imatge a dimensions personalitzades.	🔧
+🧹 Limpiar Imagen	Netejar la imatge carregada i restablir el panell.	🧹
+🔄 Rotar Imagen	Rotar la imatge 90 graus.	🔄
+💾 Guardar Imagen	Desar la imatge en el sistema de fitxers.	💾
+⏩ Adelante	Passar a la següent imatge de la galeria.	⏩
+⏪ Atrás	Tornar a la imatge anterior de la galeria.	⏪
+
+Exemples de codi
+Exemple per carregar una imatge i mostrar-la en el panell:
+```java
+imagePanel.loadImage("/path/to/your/image.jpg");
+```
+Exemple per redimensionar la imatge:
+
+```java
+imagePanel.resizeImage(800, 600); // Redimensionar a 800x600 píxels
+```
+Exemple per rotar la imatge:
+```java
+imagePanel.rotateImage(90); // Rota la imatge 90 graus
+```
+Exemple per pujar una imatge a Azure Blob Storage:
+```java
+AzureBlobService azureBlobService = new AzureBlobService("<your_connection_string>");
+File imageFile = new File("/path/to/image.jpg");
+byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+azureBlobService.uploadBlob("your-container-name", "image.jpg", imageBytes);
+```
+Com començar
+Clona el repositori o descarrega el codi.
+Afegix les dependències d'Azure Storage al teu projecte (mitjançant Maven o Gradle).
+Crea un objecte AzureBlobService amb la teva cadena de connexió d'Azure.
+Afegeix el component a la teva aplicació Java i comença a interactuar amb les imatges.
