@@ -4,19 +4,28 @@
  */
 package spdvi;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import spdvi.componentimatge.ImagePanelAzure;
 
-/**
- *
- * @author Rulox
- */
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ImagePanelAzure frame = new ImagePanelAzure();
-            frame.setVisible(true);
-        });
+    SwingUtilities.invokeLater(() -> {
+        // Crear el JFrame principal
+        JFrame frame = new JFrame("Adobat Photoshop");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear una instancia de ImagePanelAzure con el frame principal
+        ImagePanelAzure imagePanelAzure = new ImagePanelAzure(frame);
+        frame.add(imagePanelAzure);
+
+        // Configurar el tamaño y mostrar el JFrame
+        frame.setSize(800, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    });
     }
-    
 }
+
+

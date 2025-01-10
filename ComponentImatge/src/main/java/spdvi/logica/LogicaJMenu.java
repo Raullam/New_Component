@@ -192,7 +192,7 @@ public class LogicaJMenu {
 
     private static void goBackToImageEditingPanel(JFrame thiss) {
         // Crear un nuevo ImagePanelAzure, que puede ser la ventana principal de edición
-        ImagePanelAzure newImagePanel = new ImagePanelAzure();
+        ImagePanelAzure newImagePanel = new ImagePanelAzure(thiss);
 
         // Cerrar el panel actual (sobre nosotros) y abrir el panel de edición
         newImagePanel.setVisible(true);

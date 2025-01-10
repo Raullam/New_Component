@@ -3,37 +3,33 @@ package spdvi.componentimatge;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import spdvi.logica.AvancarImatge;
-import spdvi.logica.NetejarImatge;
-import spdvi.logica.RedimensionarImatge;
-import spdvi.logica.RetrocedirImatge;
-import spdvi.logica.RotarImatge;
+import spdvi.logica.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import spdvi.logica.LogicaJMenu;
 
-public class ImagePanelAzure extends JFrame {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
-    private static ImagePanel imagePanel;
+public class ImagePanelAzure extends JPanel {
+    private JFrame frame; // Referencia al JFrame principal
+    private ImagePanel imagePanel;
     private JButton btnResize, btnClear, btnRotate, btnLeft, btnRight;
-    private int currentIndex = 0; // Índice de la imagen actual
-    private final ArrayList<BufferedImage> bufferedImages = new ArrayList<>();
+    private ArrayList<BufferedImage> bufferedImages = new ArrayList<>();
     private BufferedImage currentImage;
+    private int currentIndex = 0;
 
-    public ImagePanelAzure() {
-        setTitle("Adobad Photoshop");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public ImagePanelAzure(JFrame frame) {
+        this.frame = frame; // Guardar la referencia al JFrame
+
         setLayout(new BorderLayout());
-
-        // Cargar y establece el favicon
-        setIconImage(loadIconImage("src/main/resources/imatges/2.png"));
 
         // Crear el panel de la imagen
         imagePanel = new ImagePanel();
-        
-        LogicaJMenu.jMenus(imagePanel,this, currentImage, bufferedImages, currentIndex);
+        LogicaJMenu.jMenus(imagePanel, frame, currentImage, bufferedImages, currentIndex);
 
         // Crear los botones
         btnResize = new JButton("Redimensionar");
@@ -47,106 +43,60 @@ public class ImagePanelAzure extends JFrame {
         buttonPanel.add(btnClear);
         buttonPanel.add(btnRotate);
 
-        // Añadir componentes al frame
+        // Añadir componentes al panel principal
         add(imagePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
- 
+
         // Crear paneles para los botones laterales
         JPanel leftPanel = new JPanel();
         leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-
-        btnLeft = new JButton("<-");  // Botón izquierdo
+        btnLeft = new JButton("<-");
         btnLeft.setAlignmentX(Component.CENTER_ALIGNMENT);
-        leftPanel.add(Box.createVerticalGlue()); // Espaciado para centrar
+        leftPanel.add(Box.createVerticalGlue());
         leftPanel.add(btnLeft);
-        leftPanel.add(Box.createVerticalStrut(20)); // Separación entre botones
-        leftPanel.add(Box.createVerticalGlue()); // Espaciado para centrar
-
-        // Añadir el panel izquierdo al frame
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(Box.createVerticalGlue());
         add(leftPanel, BorderLayout.WEST);
 
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-
-        btnRight = new JButton("->"); // Botón derecho
+        btnRight = new JButton("->");
         btnRight.setAlignmentX(Component.CENTER_ALIGNMENT);
-        rightPanel.add(Box.createVerticalGlue()); // Espaciado para centrar
+        rightPanel.add(Box.createVerticalGlue());
         rightPanel.add(btnRight);
-        rightPanel.add(Box.createVerticalStrut(20)); // Separación entre botones
-        rightPanel.add(Box.createVerticalGlue()); // Espaciado para centrar
-
-        // Añadir el panel derecho al frame
+        rightPanel.add(Box.createVerticalStrut(20));
+        rightPanel.add(Box.createVerticalGlue());
         add(rightPanel, BorderLayout.EAST);
 
-        // Establecer el JMenuBar en la ventana (JFrame)
-
         // Añadir funcionalidad a los botones
-        btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel, this));
+        btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel, null));
         btnClear.addActionListener(e -> NetejarImatge.limpiarImagen(imagePanel));
         btnRotate.addActionListener(e -> RotarImatge.rotarImagen(imagePanel));
-
-        // Asignar las mismas acciones a los botones de los lados
-        btnLeft.addActionListener(e -> AvancarImatge.mostrarSiguienteImagen(this)); // Retroceder
-        btnRight.addActionListener(e -> RetrocedirImatge.mostrarImagenAnterior(this)); // Avanzar
-
-        // Hacer que el frame escuche teclas
-        setFocusable(true);
-        pack();
-        setLocationRelativeTo(null); // Centrar ventana
+        btnLeft.addActionListener(e -> AvancarImatge.mostrarSiguienteImagen(null));
+        btnRight.addActionListener(e -> RetrocedirImatge.mostrarImagenAnterior(null));
     }
 
-    
-    // Método para cargar el favicon
-    private Image loadIconImage(String imagePath) {
-        try {
-            File iconFile = new File(imagePath);
-            if (!iconFile.exists()) {
-                System.out.println("Error: El archivo no existe en la ruta especificada: " + imagePath);
-                return null;
-            }
-            BufferedImage iconImage = ImageIO.read(iconFile);
-            if (iconImage == null) {
-                System.out.println("Error: No se pudo leer la imagen. Asegúrese de que el formato sea compatible.");
-            } else {
-                return iconImage.getScaledInstance(128, 128, Image.SCALE_SMOOTH);
-            }
-        } catch (IOException e) {
-            System.out.println("Error al intentar leer la imagen: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
+    // Métodos adicionales para manejar imágenes
+    public void setCurrentImage(BufferedImage image) {
+        this.currentImage = image;
+        imagePanel.loadImage(image); // Cargar imagen en el panel
     }
 
-    // Métodos para obtener el índice y la lista de imágenes
-    public int getCurrentIndex() {
-        return currentIndex;
+    public void setCurrentIndex(int index) {
+        this.currentIndex = index;
+        this.currentImage = bufferedImages.get(index);
+        setCurrentImage(currentImage);
     }
 
     public ArrayList<BufferedImage> getBufferedImages() {
         return bufferedImages;
     }
 
-    // Método para actualizar el índice y la imagen
-    public void setCurrentIndex(int index) {
-        this.currentIndex = index;
-        this.currentImage = bufferedImages.get(index);
+    public int getCurrentIndex() {
+        return currentIndex;
     }
 
-    // Método para cargar una imagen
-    public void setCurrentImage(BufferedImage image) {
-        this.currentImage = image;
-        imagePanel.loadImage(image); // Cargar imagen en el panel
-        adjustHeightToImage(image);
+    public void addImage(BufferedImage image) {
+        bufferedImages.add(image);
     }
-
-    public void adjustHeightToImage(BufferedImage image) {
-        if (image != null) {
-            // Ajustar el alto del JFrame al tamaño de la imagen
-            this.setSize(this.getWidth(), image.getHeight()); // Mantener el ancho y ajustar solo el alto
-            this.setPreferredSize(new Dimension(this.getWidth(), image.getHeight())); // Establecer solo el alto
-            this.revalidate();
-            this.repaint();
-        }
-    }
-
 }
