@@ -76,7 +76,7 @@ Aquest projecte està licenciat sota la Llicència MIT. Consulta el fitxer LICEN
 
 
 
-# 📷 Componente de Visualització d'Imatges en Java
+# 📷 Component de Visualització d'Imatges en Java
 
 Aquest component de Java proporciona una interfície gràfica per gestionar i visualitzar imatges. Permet carregar, redimensionar, rotar, guardar i navegar entre diverses imatges dins d'un panell personalitzat. També inclou funcionalitats per interactuar amb un servei de **Azure Blob Storage** per a pujar imatges.
 
@@ -156,11 +156,17 @@ A continuació es detallen les accions associades als botons:
 
 Botó	Funció	Icona
 📂 Cargar Imagen	Carregar una imatge des del sistema de fitxers.	📂
+
 🔧 Redimensionar	Redimensionar la imatge a dimensions personalitzades.	🔧
+
 🧹 Limpiar Imagen	Netejar la imatge carregada i restablir el panell.	🧹
+
 🔄 Rotar Imagen	Rotar la imatge 90 graus.	🔄
+
 💾 Guardar Imagen	Desar la imatge en el sistema de fitxers.	💾
+
 ⏩ Adelante	Passar a la següent imatge de la galeria.	⏩
+
 ⏪ Atrás	Tornar a la imatge anterior de la galeria.	⏪
 
 Exemples de codi
