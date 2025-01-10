@@ -154,20 +154,19 @@ azureBlobService.uploadBlob("your-container-name", "image.jpg", imageBytes);
 Botons interactius
 A continuació es detallen les accions associades als botons:
 
-Botó	Funció	Icona
-📂 Cargar Imagen	Carregar una imatge des del sistema de fitxers.	📂
+📂 Cargar Imagen:	Carregar una imatge des del sistema de fitxers.	📂
 
-🔧 Redimensionar	Redimensionar la imatge a dimensions personalitzades.	🔧
+🔧 Redimensionar:	Redimensionar la imatge a dimensions personalitzades.	🔧
 
-🧹 Limpiar Imagen	Netejar la imatge carregada i restablir el panell.	🧹
+🧹 Limpiar Imagen:	Netejar la imatge carregada i restablir el panell.	🧹
 
-🔄 Rotar Imagen	Rotar la imatge 90 graus.	🔄
+🔄 Rotar Imagen	:Rotar la imatge 90 graus.	🔄
 
-💾 Guardar Imagen	Desar la imatge en el sistema de fitxers.	💾
+💾 Guardar Imagen:	Desar la imatge en el sistema de fitxers.	💾
 
-⏩ Adelante	Passar a la següent imatge de la galeria.	⏩
+⏩ Adelante:	Passar a la següent imatge de la galeria.	⏩
 
-⏪ Atrás	Tornar a la imatge anterior de la galeria.	⏪
+⏪ Atrás:	Tornar a la imatge anterior de la galeria.	⏪
 
 Exemples de codi
 Exemple per carregar una imatge i mostrar-la en el panell:
