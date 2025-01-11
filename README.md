@@ -16,7 +16,7 @@ Inicialment vam començar utilitzant **JFrame**, però ens vam adonar que per po
 
 ### Càrrega d'Imatges
 
-Una de les funcionalitats més importants és la càrrega d'imatges. Inicialment, es carregaven imatges manualment utilitzant una ruta fixa. Per millorar l'experiència de l'usuari, vam implementar un **JFileChooser** que permet seleccionar múltiples imatges des del sistema de fitxers. Aquestes imatges es guarden en una llista `imagePaths` i es mostren mitjançant el component **ImagePanel**.
+Una de les funcionalitats més importants és la càrrega d'imatges. Inicialment, es carregaven imatges manualment utilitzant una ruta fixa. Pero per millorar l'experiència de l'usuari, vam implementar un **JFileChooser** que permet seleccionar múltiples imatges des del sistema de fitxers. Aquestes imatges es guarden en una llista `imagePaths` i es mostren mitjançant el component **ImagePanel**.
 
 ### Navegació entre Imatges
 
