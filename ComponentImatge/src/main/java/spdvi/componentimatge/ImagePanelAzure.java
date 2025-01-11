@@ -22,6 +22,9 @@ public class ImagePanelAzure extends JPanel {
     private BufferedImage currentImage;
     private int currentIndex = 0;
 
+    public ImagePanelAzure() {
+        this(null); // Llama al constructor principal con un valor nulo por defecto
+}
     public ImagePanelAzure(JFrame frame) {
         this.frame = frame; // Guardar la referencia al JFrame
 
