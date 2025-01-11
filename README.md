@@ -1,4 +1,4 @@
-# Component de Visualització i Manipulació d'Imatges amb Azure Blob Storage
+# 📷Component de Visualització i Manipulació d'Imatges amb Azure Blob Storage
 
 ## Introducció
 
@@ -64,21 +64,6 @@ Aquest projecte ens ha permès aprendre i aplicar diversos conceptes de **Java**
 
 En el futur, seria interessant expandir la funcionalitat per integrar altres serveis al núvol o afegir operacions avançades de manipulació d'imatges, com l'aplicació de filtres o efectes especials.
 
-
-Contribucions 🤝
-Si vols contribuir a aquest projecte, fes un fork i crea un pull request amb els teus canvis. Assegura't de seguir l'estil de codi establert i proporcionar una descripció clara dels canvis realitzats.
-
-Llicència 📝
-Aquest projecte està licenciat sota la Llicència MIT. Consulta el fitxer LICENSE per obtenir més informació.
-
-
-
-
-
-
-# 📷 Component de Visualització d'Imatges en Java
-
-Aquest component de Java proporciona una interfície gràfica per gestionar i visualitzar imatges. Permet carregar, redimensionar, rotar, guardar i navegar entre diverses imatges dins d'un panell personalitzat. També inclou funcionalitats per interactuar amb un servei de **Azure Blob Storage** per a pujar imatges.
 
 ## Característiques
 
@@ -194,3 +179,13 @@ Clona el repositori o descarrega el codi.
 Afegix les dependències d'Azure Storage al teu projecte (mitjançant Maven o Gradle).
 Crea un objecte AzureBlobService amb la teva cadena de connexió d'Azure.
 Afegeix el component a la teva aplicació Java i comença a interactuar amb les imatges.
+
+
+
+Contribucions 🤝
+Si vols contribuir a aquest projecte, fes un fork i crea un pull request amb els teus canvis. Assegura't de seguir l'estil de codi establert i proporcionar una descripció clara dels canvis realitzats.
+
+Llicència 📝
+Aquest projecte està licenciat sota la Llicència MIT. Consulta el fitxer LICENSE per obtenir més informació.
+
+
