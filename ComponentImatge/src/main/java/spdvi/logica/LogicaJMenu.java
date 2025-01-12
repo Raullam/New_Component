@@ -1,5 +1,7 @@
 package spdvi.logica;
 
+import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.themes.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Image;
@@ -8,43 +10,66 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import spdvi.componentimatge.ImagePanel;
-import spdvi.componentimatge.ImagePanelAzure;
+import javax.swing.*;
+import spdvi.componentimatge.*;
 import spdvi.serveis.AzureBlobService;
+import spdvi.ui.LookAndFeel;
 
 /**
  *
  * @author Rulox
  */
 public class LogicaJMenu {
-        private static final ArrayList<String> imagePaths = new ArrayList<>(); // pasar a la clase logicaJMenu
-        private static final String connectionString = "DefaultEndpointsProtocol=https;AccountName=alejandrostorage1;AccountKey=lE5g6+hiDokS8nYgZ9RGcXexPo6wqGWMrho4IiKYEU+9CAJysciPs2q+VHDsoWQ41bfFMAcCmG+h+ASto4i3KQ==;EndpointSuffix=core.windows.net"; // pasar a la clase logicaJMenu
-        private static final AzureBlobService blobService = new AzureBlobService(connectionString); // pasar a LogicaJMenu
-        private static final String containerName = "images"; //pasar a logicaJMenu
 
+    private static final LogicaJMenu instance = new LogicaJMenu(); // Instància única
+    private static final ArrayList<String> imagePaths = new ArrayList<>(); // pasar a la clase logicaJMenu
+    private static final String connectionString = "DefaultEndpointsProtocol=https;AccountName=alejandrostorage1;AccountKey=lE5g6+hiDokS8nYgZ9RGcXexPo6wqGWMrho4IiKYEU+9CAJysciPs2q+VHDsoWQ41bfFMAcCmG+h+ASto4i3KQ==;EndpointSuffix=core.windows.net"; // pasar a la clase logicaJMenu
+    private static final AzureBlobService blobService = new AzureBlobService(connectionString); // pasar a LogicaJMenu
+    private static final String containerName = "images"; //pasar a logicaJMenu
 
+    private static String tema = FlatIntelliJLaf.class.getCanonicalName();
+    private static String[] temes = {
+        FlatLightLaf.class.getCanonicalName(),
+        FlatDarkLaf.class.getCanonicalName(),
+        FlatIntelliJLaf.class.getCanonicalName(),
+        FlatDarculaLaf.class.getCanonicalName(),
+        FlatMacLightLaf.class.getCanonicalName(),
+        FlatMacDarkLaf.class.getCanonicalName()
+    };
+    private LookAndFeel lookNfeel = new LookAndFeel();
+    
+    public static LogicaJMenu getInstance() {
+        return instance;
+    }
 
     public static void jMenus(ImagePanel imagePanel, JFrame thiss, BufferedImage currentImage, ArrayList<BufferedImage> bufferedImages, int currentIndex) {
+        LogicaJMenu logic = getInstance(); // Obtenir la instància única
+
         // Crear un JMenuBar
         JMenuBar menuBar = new JMenuBar();
 
         // Crear un JMenu para la navegación
         JMenu navigationMenu = new JMenu("Navegació");
         JMenu navigationMenu2 = new JMenu("Sobre noltros");
+        JMenu navigationMenu3 = new JMenu("LookAndFeel");
 
-        JMenuItem coneixnos = new JMenuItem("Conocenos!");
+        // SOBRE NOLTROS
+        JMenuItem coneixnos = new JMenuItem("Coneix-nos!");
         coneixnos.addActionListener(e -> showAboutUs(thiss)); // Acción para mostrar la información en el mismo frame
         navigationMenu2.add(coneixnos);
+
+        // LOOK AND FEEL
+        
+        
+        for (String theme : temes) {
+            JMenuItem laf = new JMenuItem(theme);
+            laf.addActionListener(e -> {
+                logic.lookNfeel.setLAF(theme, thiss);
+                SwingUtilities.updateComponentTreeUI(thiss); // Actualitza l'arbre de components
+                thiss.pack(); // Ajusta la mida del frame si cal
+            });
+            navigationMenu3.add(laf);
+        }
 
         // Crear el submenú debajo de "Carregar Imatge pc"
         JMenu subMenuCarregar = new JMenu("Carregar");
@@ -70,16 +95,14 @@ public class LogicaJMenu {
         subMenuGuardar.add(guardarGaleriaLocal);
         subMenuGuardar.add(guardarGaleriaAzure);
 
-        menuBar.add(navigationMenu);
-        menuBar.add(navigationMenu2);
-
         //
         // Agregar los JMenuItems al JMenu
         navigationMenu.add(subMenuCarregar); // Añadir el submenú debajo de "Carregar Imatge pc"
         navigationMenu.add(subMenuGuardar); // Añadir el submenú debajo de "Carregar Imatge pc"
 
-        menuBar.add(navigationMenu);
-        menuBar.add(navigationMenu2);
+        menuBar.add(navigationMenu);    // Navegació
+        menuBar.add(navigationMenu2);   // Sobre noltros
+        menuBar.add(navigationMenu3);   // Look and Feel
 
         // Establecer el JMenuBar en la ventana (JFrame)
         thiss.setJMenuBar(menuBar);
@@ -199,4 +222,14 @@ public class LogicaJMenu {
         thiss.setVisible(false);  // Ocultar la ventana actual
         thiss.dispose();  // Liberar recursos de la ventana anterior
     }
+
+    public static String getTema() {
+        return tema;
+    }
+
+    public static void setTema(String tema) {
+        LogicaJMenu.tema = tema;
+    }
+    
+    
 }
