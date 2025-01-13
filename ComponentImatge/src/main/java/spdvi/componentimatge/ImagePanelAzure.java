@@ -14,7 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import spdvi.logica.LogicaJMenu;
 
-public class ImagePanelAzure extends JFrame {
+public class ImagePanelAzure extends JPanel {
 
     private static ImagePanel imagePanel;
     private JButton btnResize, btnClear, btnRotate, btnLeft, btnRight;
@@ -23,12 +23,9 @@ public class ImagePanelAzure extends JFrame {
     private BufferedImage currentImage;
 
     public ImagePanelAzure() {
-        setTitle("Adobad Photoshop");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         // Cargar y establece el favicon
-        setIconImage(loadIconImage("src/main/resources/imatges/2.png"));
 
         // Crear el panel de la imagen
         imagePanel = new ImagePanel();
@@ -81,7 +78,7 @@ public class ImagePanelAzure extends JFrame {
         // Establecer el JMenuBar en la ventana (JFrame)
 
         // Añadir funcionalidad a los botones
-        btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel, this));
+        //btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel, this));
         btnClear.addActionListener(e -> NetejarImatge.limpiarImagen(imagePanel));
         btnRotate.addActionListener(e -> RotarImatge.rotarImagen(imagePanel));
 
@@ -91,10 +88,8 @@ public class ImagePanelAzure extends JFrame {
 
         // Hacer que el frame escuche teclas
         setFocusable(true);
-        pack();
-        setLocationRelativeTo(null); // Centrar ventana
     }
-
+    
     
     // Método para cargar el favicon
     private Image loadIconImage(String imagePath) {
@@ -147,6 +142,39 @@ public class ImagePanelAzure extends JFrame {
             this.revalidate();
             this.repaint();
         }
+    }
+    
+     // Sobrescribe el método paintComponent para dibujar la imagen en el panel
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (currentImage != null) {
+            g.drawImage(currentImage, 0, 0, this);  // Dibuja la imagen
+        }
+    }
+
+    // Método para guardar la imagen en un archivo
+    // Método para guardar la imagen en un archivo
+public void saveImage(String outputPath) {
+    try {
+        // Verifica que la imagen no sea nula
+        if (currentImage != null) {
+            File outputFile = new File(outputPath);
+            // Guarda la imagen en el archivo (puede ser PNG o JPG según el tipo de archivo)
+            ImageIO.write(currentImage, "PNG", outputFile);  // Puedes cambiar "PNG" a "JPG" si es necesario
+        } else {
+            System.out.println("No hay imagen para guardar.");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();  // Maneja los errores si no se puede guardar la imagen
+    }
+}
+
+    // Método para obtener la imagen que se está mostrando (esto puede variar dependiendo de cómo gestionas la imagen)
+    public BufferedImage getImage() {
+        // Aquí deberías obtener la imagen que se muestra en tu ImagePanelAzure
+        // Este es un ejemplo genérico, tendrías que adaptarlo según cómo gestiones la imagen
+        return new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB); // Retorna una imagen de ejemplo
     }
 
 }

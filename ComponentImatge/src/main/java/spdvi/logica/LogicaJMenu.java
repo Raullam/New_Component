@@ -28,7 +28,7 @@ public class LogicaJMenu {
     private static final String containerName = "images"; //pasar a logicaJMenu
 
     private static String tema = FlatIntelliJLaf.class.getCanonicalName();
-    private static String[] temes = {
+    public static String[] temes = {
         FlatLightLaf.class.getCanonicalName(),
         FlatDarkLaf.class.getCanonicalName(),
         FlatIntelliJLaf.class.getCanonicalName(),
@@ -36,13 +36,13 @@ public class LogicaJMenu {
         FlatMacLightLaf.class.getCanonicalName(),
         FlatMacDarkLaf.class.getCanonicalName()
     };
-    private LookAndFeel lookNfeel = new LookAndFeel();
+    public LookAndFeel lookNfeel = new LookAndFeel();
     
     public static LogicaJMenu getInstance() {
         return instance;
     }
 
-    public static void jMenus(ImagePanel imagePanel, JFrame thiss, BufferedImage currentImage, ArrayList<BufferedImage> bufferedImages, int currentIndex) {
+    public static void jMenus(ImagePanel imagePanel, JPanel thiss, BufferedImage currentImage, ArrayList<BufferedImage> bufferedImages, int currentIndex) {
         LogicaJMenu logic = getInstance(); // Obtenir la instància única
 
         // Crear un JMenuBar
@@ -66,7 +66,6 @@ public class LogicaJMenu {
             laf.addActionListener(e -> {
                 logic.lookNfeel.setLAF(theme, thiss);
                 SwingUtilities.updateComponentTreeUI(thiss); // Actualitza l'arbre de components
-                thiss.pack(); // Ajusta la mida del frame si cal
             });
             navigationMenu3.add(laf);
         }
@@ -105,17 +104,17 @@ public class LogicaJMenu {
         menuBar.add(navigationMenu3);   // Look and Feel
 
         // Establecer el JMenuBar en la ventana (JFrame)
-        thiss.setJMenuBar(menuBar);
+        //thiss.setJMenuBar(menuBar);
 
         // Asignar acciones a los elementos del menú
-        guardarImatgeLocal.addActionListener(e -> GuardarImatge.guardarImagenPC(imagePanel, thiss));
+        //guardarImatgeLocal.addActionListener(e -> GuardarImatge.guardarImagenPC(imagePanel, thiss));
         guardarImatgeAzure.addActionListener(e -> GuardarImatgeAzure.selectAndSaveImage(currentImage, blobService, containerName));
         carregarGaleriaAzure.addActionListener(e -> CarregarImatge.cargarImagen(containerName, connectionString, bufferedImages, imagePaths, currentIndex, imagePanel));
 
     }
 
     // Método para mostrar la información "Conocenos!" en el mismo JFrame
-    private static void showAboutUs(JFrame thiss) {
+    public static void showAboutUs(JPanel thiss) {
         // Crear un panel para mostrar la información
         JPanel aboutUsPanel = new JPanel();
         aboutUsPanel.setLayout(new BoxLayout(aboutUsPanel, BoxLayout.Y_AXIS));
@@ -186,8 +185,8 @@ public class LogicaJMenu {
         aboutUsPanel.add(button); // Agregar el botón aquí
 
         // Reemplazar el contenido actual del JFrame con el panel de "Sobre Nosotros"
-        thiss.getContentPane().removeAll(); // Limpiar el contenido actual
-        thiss.getContentPane().add(aboutUsPanel, BorderLayout.CENTER); // Añadir el panel "Sobre Nosotros"
+        //thiss.getContentPane().removeAll(); // Limpiar el contenido actual
+        //thiss.getContentPane().add(aboutUsPanel, BorderLayout.CENTER); // Añadir el panel "Sobre Nosotros"
         thiss.revalidate(); // Revalidar el JFrame para aplicar los cambios
         thiss.repaint(); // Redibujar el JFrame
     }
@@ -213,14 +212,13 @@ public class LogicaJMenu {
         return null;
     }
 
-    private static void goBackToImageEditingPanel(JFrame thiss) {
+    private static void goBackToImageEditingPanel(JPanel thiss) {
         // Crear un nuevo ImagePanelAzure, que puede ser la ventana principal de edición
         ImagePanelAzure newImagePanel = new ImagePanelAzure();
 
         // Cerrar el panel actual (sobre nosotros) y abrir el panel de edición
         newImagePanel.setVisible(true);
         thiss.setVisible(false);  // Ocultar la ventana actual
-        thiss.dispose();  // Liberar recursos de la ventana anterior
     }
 
     public static String getTema() {

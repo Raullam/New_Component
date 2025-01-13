@@ -5,6 +5,7 @@
 package spdvi.ui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import spdvi.logica.LogicaJMenu;
@@ -18,7 +19,7 @@ public class LookAndFeel {
     public LookAndFeel() {
     }
     
-    public void setLAF(String theme, JFrame aixo)
+    public void setLAF(String theme, JPanel aixo)
     {
         try {
             LogicaJMenu.setTema(theme);

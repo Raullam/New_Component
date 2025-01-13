@@ -6,15 +6,17 @@ package spdvi.logica;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import spdvi.componentimatge.ImagePanel;
+import spdvi.componentimatge.ImagePanelAzure;
 
 /**
  *
  * @author Rulox
  */
 public class GuardarImatge {
-    public static void guardarImagenPC(ImagePanel imagePanel,JFrame frame) {
+    public static void guardarImagenPC(ImagePanelAzure imagePanelAzure, JFrame frame) {
         JFileChooser fileChooser = new JFileChooser();
     // Filtra solo archivos PNG y JPG
     FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagenes PNG y JPG", "png", "jpg");
@@ -33,7 +35,7 @@ public class GuardarImatge {
             }
         }
 
-        imagePanel.saveImage(outputPath);
+        imagePanelAzure.saveImage(outputPath);
 
     }
     }
