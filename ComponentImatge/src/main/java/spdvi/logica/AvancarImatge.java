@@ -8,7 +8,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import spdvi.componentimatge.ImagePanel;
-import spdvi.componentimatge.ImagePanelAzure;
+//import spdvi.componentimatge.ImagePanelAzure;
+import spdvi.ImagePanelAzure;
+
 
 /**
  *

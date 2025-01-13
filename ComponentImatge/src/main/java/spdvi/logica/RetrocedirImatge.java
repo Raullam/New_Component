@@ -7,7 +7,9 @@ package spdvi.logica;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import spdvi.componentimatge.ImagePanel;
-import spdvi.componentimatge.ImagePanelAzure;
+//import spdvi.componentimatge.ImagePanelAzure;
+import spdvi.ImagePanelAzure;
+
 
 /**
  *

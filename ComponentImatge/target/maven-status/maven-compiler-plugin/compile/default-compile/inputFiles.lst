@@ -1,17 +1,18 @@
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/Main.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/componentimatge/ImagePanel.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/componentimatge/ImagePanelAzure.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/AvancarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/CarregarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/GuardarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/GuardarImatgeAzure.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/LogicaJMenu.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/MostrarDimensions.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/NetejarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/RedimensionarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/RetrocedirImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/logica/RotarImatge.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/serveis/AzureBlobService.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/ui/CustomFontExample.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/ui/LogicaNavBar.java
-/home/magi/NetBeansProjects/New_Component/ComponentImatge/src/main/java/spdvi/ui/LookAndFeel.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\componentimatge\ImagePanel.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\componentimatge\ImagePanelAzure.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\ImagePanelAzure.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\AvancarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\CarregarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\GuardarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\GuardarImatgeAzure.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\LogicaJMenu.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\MostrarDimensions.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\NetejarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\RedimensionarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\RetrocedirImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\logica\RotarImatge.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\Main.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\serveis\AzureBlobService.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\ui\CustomFontExample.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\ui\LogicaNavBar.java
+D:\DAM-2\Dev. Interificies\New_Component\ComponentImatge\src\main\java\spdvi\ui\LookAndFeel.java
