@@ -14,7 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import spdvi.logica.LogicaJMenu;
 
-public class ImagePanelAzure extends JFrame {
+public class ImagePanelAzure extends JPanel {
 
     private static ImagePanel imagePanel;
     private JButton btnResize, btnClear, btnRotate, btnLeft, btnRight;
@@ -23,17 +23,17 @@ public class ImagePanelAzure extends JFrame {
     private BufferedImage currentImage;
 
     public ImagePanelAzure() {
-        setTitle("Adobad Photoshop");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setTitle("Adobad Photoshop"); HECHO
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); HECHO
         setLayout(new BorderLayout());
 
         // Cargar y establece el favicon
-        setIconImage(loadIconImage("src/main/resources/imatges/2.png"));
+        //setIconImage(loadIconImage("src/main/resources/imatges/2.png")); HECHO
 
         // Crear el panel de la imagen
         imagePanel = new ImagePanel();
         
-        LogicaJMenu.jMenus(imagePanel,this, currentImage, bufferedImages, currentIndex);
+        LogicaJMenu.jMenus(imagePanel,this, currentImage, bufferedImages, currentIndex); //SEGURO 
 
         // Crear los botones
         btnResize = new JButton("Redimensionar");
@@ -81,7 +81,7 @@ public class ImagePanelAzure extends JFrame {
         // Establecer el JMenuBar en la ventana (JFrame)
 
         // Añadir funcionalidad a los botones
-        btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel, this));
+        btnResize.addActionListener(e -> RedimensionarImatge.redimensionarImagen(imagePanel)); //ERROR
         btnClear.addActionListener(e -> NetejarImatge.limpiarImagen(imagePanel));
         btnRotate.addActionListener(e -> RotarImatge.rotarImagen(imagePanel));
 
@@ -91,8 +91,8 @@ public class ImagePanelAzure extends JFrame {
 
         // Hacer que el frame escuche teclas
         setFocusable(true);
-        pack();
-        setLocationRelativeTo(null); // Centrar ventana
+        //pack(); HECHO
+        //setLocationRelativeTo(null);  HECHO// Centrar ventana
     }
 
     
