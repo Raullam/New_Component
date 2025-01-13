@@ -10,6 +10,7 @@ spdvi\ui\CustomFontExample.class
 spdvi\componentimatge\ImagePanelAzure.class
 spdvi\logica\MostrarDimensions.class
 spdvi\ui\LogicaNavBar.class
+spdvi\logica\LogicaJMenu.class
 spdvi\componentimatge\ImagePanel$1.class
 spdvi\logica\RetrocedirImatge.class
 spdvi\logica\NetejarImatge.class
