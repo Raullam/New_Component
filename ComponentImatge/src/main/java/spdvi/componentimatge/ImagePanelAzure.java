@@ -32,9 +32,13 @@ public class ImagePanelAzure extends JPanel {
 
         // Crear el panel de la imagen
         imagePanel = new ImagePanel();
-        
-        LogicaJMenu.jMenus(imagePanel,this, currentImage, bufferedImages, currentIndex); //SEGURO 
+        JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
 
+        if (currentFrame != null) {
+            LogicaJMenu.jMenus(imagePanel, currentFrame, currentImage, bufferedImages, currentIndex); 
+        } else {
+            System.out.println("No se pudo obtener el JFrame.");
+        }
         // Crear los botones
         btnResize = new JButton("Redimensionar");
         btnClear = new JButton("Limpiar Imagen");

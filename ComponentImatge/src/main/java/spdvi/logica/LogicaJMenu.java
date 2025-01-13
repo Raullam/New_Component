@@ -20,8 +20,33 @@ import spdvi.ui.LookAndFeel;
  * @author Rulox
  */
 public class LogicaJMenu {
+    private JFrame parentFrame; // Se guarda el JFrame de la aplicación
+    JMenuBar menuBar = new JMenuBar();
+    // Crear menús
+        JMenu fileMenu = new JMenu("Archivo");
+        JMenu editMenu = new JMenu("Editar");
+        JMenu helpMenu = new JMenu("Ayuda");
 
-    private static final LogicaJMenu instance = new LogicaJMenu(); // Instància única
+        // Crear ítems de menú
+        JMenuItem openItem = new JMenuItem("Abrir");
+        JMenuItem saveItem = new JMenuItem("Guardar");
+        JMenuItem exitItem = new JMenuItem("Salir");
+
+        // Agregar ítems al menú "Archivo"
+        //fileMenu.add(openItem);
+        //fileMenu.add(saveItem);
+        //fileMenu.addSeparator();
+        //fileMenu.add(exitItem);
+
+        // Agregar menús al JMenuBar
+        //menuBar.add(fileMenu);
+        //menuBar.add(editMenu);
+        //menuBar.add(helpMenu);
+
+        // Asignar el JMenuBar al JFrame
+        //parentFrame.setJMenuBar(menuBar);
+
+    private static LogicaJMenu instance; // Instància única
     private static final ArrayList<String> imagePaths = new ArrayList<>(); // pasar a la clase logicaJMenu
     private static final String connectionString = "DefaultEndpointsProtocol=https;AccountName=alejandrostorage1;AccountKey=lE5g6+hiDokS8nYgZ9RGcXexPo6wqGWMrho4IiKYEU+9CAJysciPs2q+VHDsoWQ41bfFMAcCmG+h+ASto4i3KQ==;EndpointSuffix=core.windows.net"; // pasar a la clase logicaJMenu
     private static final AzureBlobService blobService = new AzureBlobService(connectionString); // pasar a LogicaJMenu
@@ -38,13 +63,17 @@ public class LogicaJMenu {
     };
     private LookAndFeel lookNfeel = new LookAndFeel();
     
-    public static LogicaJMenu getInstance() {
-        return instance;
+    public LogicaJMenu(JFrame frame) {
+        this.parentFrame = frame;  // Inicializar la referencia del JFrame
+    }
+    public static LogicaJMenu getInstance(JFrame frame) {
+        return new LogicaJMenu(frame); // Pasar el JFrame en la creación
+
     }
 
     public static void jMenus(ImagePanel imagePanel, JFrame thiss, BufferedImage currentImage, ArrayList<BufferedImage> bufferedImages, int currentIndex) {
-        LogicaJMenu logic = getInstance(); // Obtenir la instància única
-
+        LogicaJMenu logicaJMenu = new LogicaJMenu();
+    
         // Crear un JMenuBar
         JMenuBar menuBar = new JMenuBar();
 
@@ -64,7 +93,7 @@ public class LogicaJMenu {
         for (String theme : temes) {
             JMenuItem laf = new JMenuItem(theme);
             laf.addActionListener(e -> {
-                logic.lookNfeel.setLAF(theme, thiss);
+                //logic.lookNfeel.setLAF(theme, thiss);
                 SwingUtilities.updateComponentTreeUI(thiss); // Actualitza l'arbre de components
                 thiss.pack(); // Ajusta la mida del frame si cal
             });
@@ -216,7 +245,7 @@ public class LogicaJMenu {
     private static void goBackToImageEditingPanel(JFrame thiss) {
         
         // Crear un nuevo ImagePanelAzure, que puede ser la ventana principal de edición
-        //ImagePanelAzure newImagePanel = new ImagePanelAzure(Jframe frame);
+        ImagePanelAzure newImagePanel = new ImagePanelAzure();
 
         // Cerrar el panel actual (sobre nosotros) y abrir el panel de edición
         //newImagePanel.setVisible(true);
@@ -230,6 +259,10 @@ public class LogicaJMenu {
 
     public static void setTema(String tema) {
         LogicaJMenu.tema = tema;
+    }
+
+    private LogicaJMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
