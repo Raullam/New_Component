@@ -21,30 +21,8 @@ import spdvi.ui.LookAndFeel;
  */
 public class LogicaJMenu {
     private JFrame parentFrame; // Se guarda el JFrame de la aplicación
-    JMenuBar menuBar = new JMenuBar();
-    // Crear menús
-        JMenu fileMenu = new JMenu("Archivo");
-        JMenu editMenu = new JMenu("Editar");
-        JMenu helpMenu = new JMenu("Ayuda");
-
-        // Crear ítems de menú
-        JMenuItem openItem = new JMenuItem("Abrir");
-        JMenuItem saveItem = new JMenuItem("Guardar");
-        JMenuItem exitItem = new JMenuItem("Salir");
-
-        // Agregar ítems al menú "Archivo"
-        //fileMenu.add(openItem);
-        //fileMenu.add(saveItem);
-        //fileMenu.addSeparator();
-        //fileMenu.add(exitItem);
-
-        // Agregar menús al JMenuBar
-        //menuBar.add(fileMenu);
-        //menuBar.add(editMenu);
-        //menuBar.add(helpMenu);
-
-        // Asignar el JMenuBar al JFrame
-        //parentFrame.setJMenuBar(menuBar);
+    //JMenuBar menuBar = JMenuBar();
+    
 
     private static LogicaJMenu instance; // Instància única
     private static final ArrayList<String> imagePaths = new ArrayList<>(); // pasar a la clase logicaJMenu
@@ -72,8 +50,8 @@ public class LogicaJMenu {
     }
 
     public static void jMenus(ImagePanel imagePanel, JFrame thiss, BufferedImage currentImage, ArrayList<BufferedImage> bufferedImages, int currentIndex) {
-        LogicaJMenu logicaJMenu = new LogicaJMenu();
-    
+        //JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+        //LogicaJMenu menuLogic = new LogicaJMenu(parentFrame);    
         // Crear un JMenuBar
         JMenuBar menuBar = new JMenuBar();
 
@@ -261,9 +239,7 @@ public class LogicaJMenu {
         LogicaJMenu.tema = tema;
     }
 
-    private LogicaJMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
     
     
 }

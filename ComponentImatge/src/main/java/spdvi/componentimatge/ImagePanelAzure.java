@@ -22,6 +22,44 @@ public class ImagePanelAzure extends JPanel {
     private final ArrayList<BufferedImage> bufferedImages = new ArrayList<>();
     private BufferedImage currentImage;
 
+    private JMenuBar createMenuBar(JFrame parentFrame) {
+        JMenuBar menuBar = new JMenuBar();
+
+        // Crear el menú principal
+        JMenu menuArchivo = new JMenu("Archivo");
+        JMenu menuEdicion = new JMenu("Edición");
+
+        // Opciones para "Archivo"
+        JMenuItem menuItemAbrir = new JMenuItem("Abrir");
+        JMenuItem menuItemGuardar = new JMenuItem("Guardar");
+        JMenuItem menuItemSalir = new JMenuItem("Salir");
+
+        menuItemAbrir.addActionListener(e -> JOptionPane.showMessageDialog(parentFrame, "Abrir archivo seleccionado"));
+        menuItemGuardar.addActionListener(e -> JOptionPane.showMessageDialog(parentFrame, "Guardar archivo seleccionado"));
+        menuItemSalir.addActionListener(e -> System.exit(0)); // Cierra la aplicación
+
+        menuArchivo.add(menuItemAbrir);
+        menuArchivo.add(menuItemGuardar);
+        menuArchivo.addSeparator(); // Separador visual
+        menuArchivo.add(menuItemSalir);
+
+        // Opciones para "Edición"
+        JMenuItem menuItemRotar = new JMenuItem("Rotar Imagen");
+        JMenuItem menuItemLimpiar = new JMenuItem("Limpiar Imagen");
+
+        menuItemRotar.addActionListener(e -> System.out.println("Funcionalidad de rotar"));
+        menuItemLimpiar.addActionListener(e -> System.out.println("Funcionalidad de limpiar"));
+
+        menuEdicion.add(menuItemRotar);
+        menuEdicion.add(menuItemLimpiar);
+
+        // Añadir menús al JMenuBar
+        menuBar.add(menuArchivo);
+        menuBar.add(menuEdicion);
+
+        return menuBar;
+    }
+    
     public ImagePanelAzure() {
         //setTitle("Adobad Photoshop"); HECHO
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); HECHO
@@ -35,9 +73,10 @@ public class ImagePanelAzure extends JPanel {
         JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(this); 
 
         if (currentFrame != null) {
-            LogicaJMenu.jMenus(imagePanel, currentFrame, currentImage, bufferedImages, currentIndex); 
+            JMenuBar menuBar = createMenuBar(currentFrame);
+            currentFrame.setJMenuBar(menuBar);
         } else {
-            System.out.println("No se pudo obtener el JFrame.");
+            System.out.println("No se pudo obtener el JFrame para añadir el menú.");
         }
         // Crear los botones
         btnResize = new JButton("Redimensionar");
